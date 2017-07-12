@@ -19,7 +19,19 @@ loop do                                             # Server runs forever
   time = Time.now.ctime
   response = "#{header}\r\n\r\n#{time}"       # Output the HTTP header with current time to the client
 
-  client.puts(response)
+  response = "
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>My first web server</title>
+    </head>
+    <body>
+      <h1>My first web server</h1>
+      <p>Oh hey, this is my first HTML response!</p>
+    </body>
+</html>"
+
+client.puts(response)
 
   client.close                                      # Disconnect from the client
 end
